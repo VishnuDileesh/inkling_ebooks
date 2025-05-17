@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 
-from app.api.v1 import books
-from app.core.config import settings
+from app.api.v1.books import router as books_router
 
 app = FastAPI(title="Inkling Ebooks", version="1.0.0")
 
-app.include_router(books, prefix="/api/v1", tags=["Books"])
+app.include_router(books_router, prefix="/api/v1", tags=["Books"])
 
 
 @app.get("/", tags=["Health Check"])

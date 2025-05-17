@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from .author import Author
 from .bookshelf import Bookshelf
@@ -24,5 +24,4 @@ class Book(BookBase):
     subjects: List[Subject] = []
     formats: List[Format] = []
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)

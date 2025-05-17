@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class SubjectBase(BaseModel):
@@ -8,5 +8,4 @@ class SubjectBase(BaseModel):
 class Subject(SubjectBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
