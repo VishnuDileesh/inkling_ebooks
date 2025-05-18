@@ -6,6 +6,11 @@ A FastAPI-based REST API for accessing and searching through Project Gutenberg's
 
 [Docs](https://inkling-ebooks-image-412181778426.asia-south1.run.app/docs)
 
+
+- PostgreSQL Database is deployed on NeonDB
+- Docker image is stored in GCP Artifact Registry
+- API is deployed on GCP CloudRun
+
 ## Features
 
 - Search books by multiple criteria:
