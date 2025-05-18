@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class FormatBase(BaseModel):
@@ -9,5 +9,4 @@ class FormatBase(BaseModel):
 class Format(FormatBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
