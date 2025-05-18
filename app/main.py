@@ -1,8 +1,15 @@
 from fastapi import FastAPI
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 
 from app.api.v1.books import router as books_router
+from app.limiter import limiter
 
 app = FastAPI(title="Inkling Ebooks", version="1.0.0")
+
+app.state.limiter = limiter
+
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.include_router(books_router, prefix="/api/v1", tags=["Books"])
 

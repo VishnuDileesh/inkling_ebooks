@@ -1,17 +1,21 @@
 from typing import List, Optional
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request
+from slowapi.util import get_remote_address
 from sqlalchemy.orm import Session
 
 from app.crud.book import get_books_filtered
 from app.db.deps import get_db
+from app.limiter import limiter
 from app.schemas import Book as BookSchema
 
 router = APIRouter()
 
 
 @router.get("/books")
+@limiter.limit("10/minute")
 def get_books(
+    request: Request,
     gutenberg_ids: Optional[List[int]] = Query(None),
     languages: Optional[List[str]] = Query(None),
     mime_types: Optional[List[str]] = Query(None),

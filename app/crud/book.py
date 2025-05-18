@@ -6,17 +6,22 @@ from app.models import Author, Book, Bookshelf, Format, Language, Subject
 
 def get_books_filtered(
     db: Session,
-    gutenberg_ids: list[int] = [],
-    languages: list[str] = [],
-    mime_types: list[str] = [],
-    topics: list[str] = [],
-    authors: list[str] = [],
-    titles: list[str] = [],
+    gutenberg_ids: list[int] = None,
+    languages: list[str] = None,
+    mime_types: list[str] = None,
+    topics: list[str] = None,
+    authors: list[str] = None,
+    titles: list[str] = None,
     page: int = 1,
     page_size: int = 25,
 ):
 
-    print(f"Gutenberg Ids: {gutenberg_ids}")
+    gutenberg_ids = gutenberg_ids or []
+    languages = languages or []
+    mime_types = mime_types or []
+    topics = topics or []
+    authors = authors or []
+    titles = titles or []
 
     query = db.query(Book).options(
         selectinload(Book.authors),
