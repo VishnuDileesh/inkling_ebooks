@@ -2,6 +2,10 @@
 
 A FastAPI-based REST API for accessing and searching through Project Gutenberg's ebook collection.
 
+[Base Live URL](https://inkling-ebooks-image-412181778426.asia-south1.run.app)
+
+[Docs](https://inkling-ebooks-image-412181778426.asia-south1.run.app/docs)
+
 ## Features
 
 - Search books by multiple criteria:
@@ -76,8 +80,8 @@ GET /api/v1/books?languages=en&languages=fr&mime_types=text/plain&topics=philoso
 
 ## Docker Deployment
 
-For deployment to Cloud Run - refer 
-`https://vishnudileesh.stck.me/post/715290/Dockerizing-a-Hello-World-Express-App-and-Uploading-to-GCP-Artifact-Registry`
+[Reference for Cloud Run Deployment](https://vishnudileesh.stck.me/post/715290/Dockerizing-a-Hello-World-Express-App-and-Uploading-to-GCP-Artifact-Registry)
+
 
 1. Build the Docker image:
 ```bash
